@@ -1,33 +1,120 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+import { useForm, SubmitHandler } from "react-hook-form"
 import './App.css'
 
+type Inputs = {
+  avatar: File;
+  name: string;
+  phone: number;
+  email: string;
+  age: number;
+}
+
 function App() {
-  const [count, setCount] = useState(0)
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>()
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+
+  // console.log(watch("avatar"))
+
+  // const allFields = watch();
+
+  // const [cardData, setCardData] = useState<Inputs>(allFields);
+
+  const avatarWatch = watch("avatar");
+
+  useEffect(() => {
+    console.log('atualizou')
+  }, [avatarWatch])
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="container grid gap-3">
+        <div className="card-wrapper p-5">
+          <div className="card bg-blue-gray-700 text-teal-parcelex-300 rounded-md p-3">
+            <p className="field avatar">
+              Avatar
+            </p>
+            <p className="field name">
+              {watch("name")}
+            </p>
+            <p className="field age">
+              {watch("age")}
+            </p>
+            <p className="field phone">
+              {watch("phone")}
+            </p>
+            <p className="field email">
+              {watch("email")}
+            </p>
+          </div>
+        </div>
+        <div className="form-wrapper p-5">
+          <div className="form">
+            <form className="grid gap-3" onSubmit={handleSubmit(onSubmit)}>
+              <input
+                className="field"
+                type="file"
+                {...register("avatar", { required: true })}
+              />
+              {errors.avatar && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+
+              <input
+                className="field"
+                type="text"
+                placeholder="João da Silva"
+                maxLength={20}
+                pattern="[A-Za-z]+"
+                {...register("name", {
+                  required: true
+                })}
+              />
+              {errors.name && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+
+              <input
+                className="field"
+                type="number"
+                placeholder='99999-9999'
+                minLength={8}
+                maxLength={9}
+                {...register("phone", {
+                  required: true,
+                })}
+              />
+              {errors.phone && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+
+              <input
+                className="field"
+                type="email"
+                placeholder='joao@dasilva.com'
+                maxLength={30}
+                {...register("email", { required: true })}
+              />
+              {errors.email && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+
+              <input
+                className="field"
+                type="number"
+                placeholder='99'
+                min={18}
+                max={99}
+                {...register("age", {
+                  required: true,
+                })}
+              />
+              {errors.age && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+
+              <input type='submit' value="Enviar" />
+            </form>
+
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
