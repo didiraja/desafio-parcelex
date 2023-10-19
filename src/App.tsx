@@ -20,49 +20,56 @@ function App() {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
-  // console.log(watch("avatar"))
+  const handleImage = (event) => {
+    const imageURL = URL.createObjectURL(event.target.files[0]);
+    setAvatar(imageURL);
+  }
 
-  // const allFields = watch();
-
-  // const [cardData, setCardData] = useState<Inputs>(allFields);
-
-  const avatarWatch = watch("avatar");
-
-  useEffect(() => {
-    console.log('atualizou')
-  }, [avatarWatch])
+  const [avatarSrc, setAvatar] = useState("");
 
   return (
     <>
-      <div className="container grid gap-3">
-        <div className="card-wrapper p-5">
-          <div className="card bg-blue-gray-700 text-teal-parcelex-300 rounded-md p-3">
-            <p className="field avatar">
-              Avatar
-            </p>
-            <p className="field name">
-              {watch("name")}
-            </p>
-            <p className="field age">
-              {watch("age")}
-            </p>
-            <p className="field phone">
-              {watch("phone")}
-            </p>
-            <p className="field email">
-              {watch("email")}
-            </p>
+      <div className="container">
+        <div className="card-wrapper">
+          <div className="card">
+            <div className="field avatar">
+              <p className="label">
+                Avatar
+              </p>
+              <img className="" src={avatarSrc} alt="" />
+            </div>
+            <div className="field name">
+              <p>
+                {watch("name")}
+              </p>
+            </div>
+            <div className="field age">
+              <p>
+                {watch("age")}
+              </p>
+            </div>
+            <div className="field phone">
+              <p>
+                {watch("phone")}
+              </p>
+            </div>
+            <div className="field email">
+              <p>
+                {watch("email")}
+              </p>
+            </div>
           </div>
         </div>
-        <div className="form-wrapper p-5">
+        <div className="form-wrapper">
           <div className="form">
-            <form className="grid gap-3" onSubmit={handleSubmit(onSubmit)}>
+            <form className="" onSubmit={handleSubmit(onSubmit)}>
               <input
                 className="field"
                 type="file"
-                {...register("avatar", { required: true })}
+                onChange={handleImage}
+                required
               />
-              {errors.avatar && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+              {errors.avatar && <span className='error-text'>Este campo é obrigatório</span>}
 
               <input
                 className="field"
@@ -74,7 +81,7 @@ function App() {
                   required: true
                 })}
               />
-              {errors.name && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+              {errors.name && <span className='error-text'>Este campo é obrigatório</span>}
 
               <input
                 className="field"
@@ -86,7 +93,7 @@ function App() {
                   required: true,
                 })}
               />
-              {errors.phone && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+              {errors.phone && <span className='error-text'>Este campo é obrigatório</span>}
 
               <input
                 className="field"
@@ -95,7 +102,7 @@ function App() {
                 maxLength={30}
                 {...register("email", { required: true })}
               />
-              {errors.email && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+              {errors.email && <span className='error-text'>Este campo é obrigatório</span>}
 
               <input
                 className="field"
@@ -107,9 +114,9 @@ function App() {
                   required: true,
                 })}
               />
-              {errors.age && <span className='text-xs text-red-300'>Este campo é obrigatório</span>}
+              {errors.age && <span className='error-text'>Este campo é obrigatório</span>}
 
-              <input type='submit' value="Enviar" />
+              <input className='btn-submit' type='submit' value="Enviar" />
             </form>
 
           </div>
