@@ -34,34 +34,38 @@ function App() {
       <div className="container">
         <div className="card-wrapper">
           <div className="card">
-            <div className="field avatar">
-              <p className="label">
-                Avatar
-              </p>
-              <img className="" src={avatarSrc} alt="" />
+
+            <div className="grid grid-cols-1">
+              <div className="field avatar">
+                <p className="label">Avatar</p>
+                <img className="" src={avatarSrc} alt="" />
+              </div>
             </div>
-            <div className="field name">
-              <p>
-                {watch("name")}
-              </p>
+
+            <div className="grid grid-cols-1 gap-2">
+              <div className="field name">
+                <p className="label">Nome</p>
+                <p>{watch("name")}</p>
+              </div>
+              <div className="field age">
+                <p className="label">Idade</p>
+                <p>{watch("age")}</p>
+              </div>
             </div>
-            <div className="field age">
-              <p>
-                {watch("age")}
-              </p>
-            </div>
-            <div className="field phone">
-              <p>
-                {watch("phone")}
-              </p>
-            </div>
-            <div className="field email">
-              <p>
-                {watch("email")}
-              </p>
+
+            <div className="grid grid-cols-1 gap-2">
+              <div className="field phone">
+                <p className="label">Telefone</p>
+                <p>{watch("phone")}</p>
+              </div>
+              <div className="field email">
+                <p className="label">E-mail</p>
+                <p>{watch("email")}</p>
+              </div>
             </div>
           </div>
         </div>
+
         <div className="form-wrapper">
           <h2 className="title">Cadastro Parcelex</h2>
           <div className="form">
@@ -100,8 +104,8 @@ function App() {
                   className="field"
                   type="number"
                   placeholder='99999-9999'
-                  minLength={8}
-                  maxLength={9}
+                  min={11111111}
+                  max={999999999}
                   {...register("phone", {
                     required: true,
                   })}
