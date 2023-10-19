@@ -27,6 +27,8 @@ function App() {
 
   const [avatarSrc, setAvatar] = useState("");
 
+  const ERROR_MSG = "Este campo é obrigatório";
+
   return (
     <>
       <div className="container">
@@ -61,60 +63,78 @@ function App() {
           </div>
         </div>
         <div className="form-wrapper">
+          <h2 className="title">Cadastro Parcelex</h2>
           <div className="form">
             <form className="" onSubmit={handleSubmit(onSubmit)}>
-              <input
-                className="field"
-                type="file"
-                onChange={handleImage}
-                required
-              />
-              {errors.avatar && <span className='error-text'>Este campo é obrigatório</span>}
 
-              <input
-                className="field"
-                type="text"
-                placeholder="João da Silva"
-                maxLength={20}
-                pattern="[A-Za-z]+"
-                {...register("name", {
-                  required: true
-                })}
-              />
-              {errors.name && <span className='error-text'>Este campo é obrigatório</span>}
+              <div className="section">
+                <label className='label' htmlFor="avatar">Escolha seu avatar:</label>
+                <input
+                  name='avatar'
+                  className="field"
+                  type="file"
+                  onChange={handleImage}
+                  required
+                />
+                {errors.avatar && <span className='error-text'>{ERROR_MSG}</span>}
+              </div>
 
-              <input
-                className="field"
-                type="number"
-                placeholder='99999-9999'
-                minLength={8}
-                maxLength={9}
-                {...register("phone", {
-                  required: true,
-                })}
-              />
-              {errors.phone && <span className='error-text'>Este campo é obrigatório</span>}
+              <div className="section">
+                <label className='label' htmlFor="name">Preencha seu nome:</label>
+                <input
+                  className="field"
+                  type="text"
+                  placeholder="João da Silva"
+                  maxLength={20}
+                  pattern="[A-Za-z]+"
+                  {...register("name", {
+                    required: true
+                  })}
+                />
+                {errors.name && <span className='error-text'>{ERROR_MSG}</span>}
+              </div>
 
-              <input
-                className="field"
-                type="email"
-                placeholder='joao@dasilva.com'
-                maxLength={30}
-                {...register("email", { required: true })}
-              />
-              {errors.email && <span className='error-text'>Este campo é obrigatório</span>}
+              <div className="section">
+                <label className='label' htmlFor="número">Preencha seu número:</label>
+                <input
+                  className="field"
+                  type="number"
+                  placeholder='99999-9999'
+                  minLength={8}
+                  maxLength={9}
+                  {...register("phone", {
+                    required: true,
+                  })}
+                />
+                {errors.phone && <span className='error-text'>{ERROR_MSG}</span>}
+              </div>
 
-              <input
-                className="field"
-                type="number"
-                placeholder='99'
-                min={18}
-                max={99}
-                {...register("age", {
-                  required: true,
-                })}
-              />
-              {errors.age && <span className='error-text'>Este campo é obrigatório</span>}
+              <div className="section">
+                <label className='label' htmlFor="email">Preencha seu email:</label>
+                <input
+                  className="field"
+                  type="email"
+                  placeholder='joao@dasilva.com'
+                  maxLength={30}
+                  {...register("email", { required: true })}
+                />
+                {errors.email && <span className='error-text'>{ERROR_MSG}</span>}
+              </div>
+
+              <div className="section">
+                <label className='label' htmlFor="Idade">Preencha sua idade:</label>
+                <input
+                  className="field"
+                  type="number"
+                  placeholder='99'
+                  min={18}
+                  max={99}
+                  {...register("age", {
+                    required: true,
+                  })}
+                />
+                {errors.age && <span className='error-text'>{ERROR_MSG}</span>}
+              </div>
 
               <input className='btn-submit' type='submit' value="Enviar" />
             </form>

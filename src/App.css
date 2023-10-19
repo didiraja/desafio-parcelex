@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -26,18 +26,30 @@
 }
 
 .form-wrapper {
-  @apply p-5;
+  @apply bg-zinc-900 rounded-lg p-5;
+
+  .title {
+    @apply text-3xl font-bold mb-5;
+  }
 
   .form {
     form {
       @apply grid gap-3;
+
+      .label {
+        @apply block text-left mb-3;
+      }
+
+      .field {
+        @apply w-full p-3 rounded-lg;
+      }
 
       .error-text {
         @apply text-xs text-red-300;
       }
 
       .btn-submit {
-        
+        @apply bg-blue-gray-500 mt-5 p-3 rounded-lg font-semibold text-xl tracking-wide;
       }
     }
   }
