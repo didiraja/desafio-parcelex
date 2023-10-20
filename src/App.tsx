@@ -4,7 +4,6 @@ import Logo from "../public/favicon.svg";
 import './App.css'
 
 type FormData = {
-  avatar: File;
   name: string;
   phone: number;
   email: string;
@@ -22,8 +21,11 @@ function App() {
     formState: { errors },
   } = useForm<FormData>()
 
-  const onSubmit: SubmitHandler<FormData> = () => {
-    // console.log(data)
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    const hash = new Date().toISOString();
+    const dataAsString = JSON.stringify({ avatar: avatarSrc, ...data });
+
+    localStorage.setItem(hash, dataAsString);
 
     setSuccess(true);
   }
@@ -111,7 +113,6 @@ function App() {
                         onChange={handleImage}
                         required
                       />
-                      {errors.avatar && <span className='error-text'>{ERROR_MSG}</span>}
                     </div>
 
                     <div className="section">
