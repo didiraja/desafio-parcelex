@@ -7,7 +7,8 @@
 - [x] Typescript
 - [x] TailwindCSS
 - [x] Tela de Sucesso
-- [ ] Responsivo
+- [x] Responsivo
+- [x] LocalStorage
 - [x] favicon
 - [x] Type Check
 - [x] Deploy
