@@ -9,6 +9,22 @@
   @apply grid gap-3;
 }
 
+.success-wrapper {
+  @apply p-5;
+
+  .card {
+    @apply bg-zinc-900 rounded-md p-3;
+
+    .title {
+      @apply font-bold text-2xl text-center mb-3;
+    }
+
+    .message {
+      @apply text-center;
+    }
+  }
+}
+
 .card-wrapper {
   @apply p-5;
 
