@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
+import Logo from "../public/favicon.svg";
 import './App.css'
 
 type FormData = {
@@ -41,11 +42,14 @@ function App() {
 
   return (
     <>
-      <div className="container">
+      <div className={`container ${isSuccess ? 'success-container' : ''}`}>
         {
           isSuccess ?
             <div className="success-wrapper">
               <div className="card">
+
+                <img className="logo" src={Logo} alt="Parcelex" />
+
                 <h2 className="title">Obrigado!</h2>
 
                 <p className="message">
@@ -117,7 +121,7 @@ function App() {
                         type="text"
                         placeholder="João da Silva"
                         maxLength={20}
-                        pattern="[A-Za-z]+"
+                        pattern="[^\d]+"
                         {...register("name", {
                           required: true
                         })}

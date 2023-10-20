@@ -4,13 +4,21 @@
 
 .container {
   @apply grid gap-3 lg:grid-cols-2 mx-auto;
+
+  &.success-container {
+    @apply flex justify-center;
+  }
 }
 
 .success-wrapper {
-  @apply p-5;
+  @apply p-5 mx-auto;
 
   .card {
-    @apply bg-zinc-900 rounded-md p-3;
+    @apply bg-zinc-900 rounded-md p-8 mx-auto md:w-[30rem];
+
+    .logo {
+      @apply mx-auto w-12 mb-5;
+    }
 
     .title {
       @apply font-bold text-2xl text-center mb-3;
