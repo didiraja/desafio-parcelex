@@ -1,12 +1,9 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem;
-  text-align: center;
+  @apply w-full p-3 mx-auto text-center;
 }
 
 .container {
-  @apply grid gap-3;
+  @apply grid gap-3 /* max-w-full */;
 }
 
 .success-wrapper {
@@ -26,16 +23,23 @@
 }
 
 .card-wrapper {
-  @apply p-5;
+  /* @apply max-w-full; */
 
   .card {
-    @apply bg-blue-gray-700 text-teal-parcelex-300 rounded-md p-3;
+    @apply bg-blue-gray-700 text-teal-parcelex-300 rounded-md p-5;
 
     .field {
-      @apply mb-5;
+      @apply grid break-all mb-5;
+      /* border: 1px dotted red; */
 
       .label {
         @apply text-white font-semibold mb-1;
+        /* border: 1px dotted red; */
+      }
+
+      .value {
+        @apply break-words;
+        /* border: 1px dotted red; */
       }
 
       &.avatar {

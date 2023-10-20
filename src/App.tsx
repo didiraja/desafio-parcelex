@@ -44,50 +44,50 @@ function App() {
       <div className="container">
         {
           isSuccess ?
-          <div className="success-wrapper">
-          <div className="card">
-            <h2 className="title">Obrigado!</h2>
+            <div className="success-wrapper">
+              <div className="card">
+                <h2 className="title">Obrigado!</h2>
 
-            <p className="message">
-              Seu registro foi concluído com sucesso!
-            </p>
-          </div>
-        </div>
-          : null
+                <p className="message">
+                  Seu registro foi concluído com sucesso!
+                </p>
+              </div>
+            </div>
+            : null
         }
 
         {
-          !isSuccess ? 
+          !isSuccess ?
             <>
               <div className="card-wrapper">
                 <div className="card">
 
-                  <div className="grid grid-cols-1">
+                  <div className="columns-1">
                     <div className="field avatar">
                       <p className="label">Avatar</p>
                       <img className="" src={avatarSrc} alt="" />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <div className="columns-2">
                     <div className="field name">
                       <p className="label">Nome</p>
-                      <p>{watch("name")}</p>
+                      <p className="value">{watch("name")}</p>
                     </div>
                     <div className="field age">
                       <p className="label">Idade</p>
-                      <p>{watch("age")}</p>
+                      <p className="value">{watch("age")}</p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <div className="columns-2">
                     <div className="field phone">
                       <p className="label">Telefone</p>
-                      <p>{watch("phone")}</p>
+                      <p className="value">{watch("phone")}</p>
                     </div>
                     <div className="field email">
                       <p className="label">E-mail</p>
-                      <p>{watch("email")}</p>
+                      <p className="value">{watch("email")}</p>
                     </div>
                   </div>
                 </div>
@@ -172,8 +172,8 @@ function App() {
 
                 </div>
               </div>
-            </> 
-          : null
+            </>
+            : null
         }
       </div>
     </>
