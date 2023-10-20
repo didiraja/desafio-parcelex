@@ -1,8 +1,8 @@
-import { DetailedHTMLProps, InputHTMLAttributes, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import './App.css'
 
-type Inputs = {
+type FormData = {
   avatar: File;
   name: string;
   phone: number;
@@ -19,9 +19,9 @@ function App() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>()
+  } = useForm<FormData>()
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<FormData> = () => {
     // console.log(data)
 
     setSuccess(true);
