@@ -42,6 +42,8 @@ function App() {
 
   const ERROR_MSG = "Este campo é obrigatório";
 
+  const ERROR_COMPONENT = () => <span className='error-text'>{ERROR_MSG}</span>;
+
   return (
     <>
       <div className={`container ${isSuccess ? 'success-container' : ''}`}>
@@ -127,7 +129,7 @@ function App() {
                           required: true
                         })}
                       />
-                      {errors.name && <span className='error-text'>{ERROR_MSG}</span>}
+                      {errors.name && <ERROR_COMPONENT />}
                     </div>
 
                     <div className="section">
@@ -142,7 +144,7 @@ function App() {
                           required: true,
                         })}
                       />
-                      {errors.age && <span className='error-text'>{ERROR_MSG}</span>}
+                      {errors.age && <ERROR_COMPONENT />}
                     </div>
 
                     <div className="section">
@@ -157,7 +159,7 @@ function App() {
                           required: true,
                         })}
                       />
-                      {errors.phone && <span className='error-text'>{ERROR_MSG}</span>}
+                      {errors.phone && <ERROR_COMPONENT />}
                     </div>
 
                     <div className="section">
@@ -169,7 +171,7 @@ function App() {
                         maxLength={30}
                         {...register("email", { required: true })}
                       />
-                      {errors.email && <span className='error-text'>{ERROR_MSG}</span>}
+                      {errors.email && <ERROR_COMPONENT />}
                     </div>
 
                     <input className='btn-submit' type='submit' value="Enviar" />
