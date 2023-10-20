@@ -1,9 +1,9 @@
 #root {
-  @apply w-full p-3 mx-auto text-center;
+  @apply w-full p-3 mx-auto text-center lg:max-w-5xl;
 }
 
 .container {
-  @apply grid gap-3 /* max-w-full */;
+  @apply grid gap-3 lg:grid-cols-2 mx-auto;
 }
 
 .success-wrapper {
@@ -23,23 +23,22 @@
 }
 
 .card-wrapper {
-  /* @apply max-w-full; */
+  @apply w-full lg:flex lg:items-center;
 
   .card {
-    @apply bg-blue-gray-700 text-teal-parcelex-300 rounded-md p-5;
+    @apply border border-blue-gray-300 bg-blue-gray-700 text-teal-parcelex-300 rounded-md p-5;
 
     .field {
       @apply grid break-all mb-5;
-      /* border: 1px dotted red; */
 
       .label {
         @apply text-white font-semibold mb-1;
-        /* border: 1px dotted red; */
+
       }
 
       .value {
         @apply break-words;
-        /* border: 1px dotted red; */
+
       }
 
       &.avatar {
@@ -52,7 +51,7 @@
 }
 
 .form-wrapper {
-  @apply bg-zinc-900 rounded-lg p-5;
+  @apply border border-blue-gray-300 bg-zinc-900 rounded-lg p-5 mx-auto w-full md:w-[30rem];
 
   .title {
     @apply text-3xl font-bold mb-5;

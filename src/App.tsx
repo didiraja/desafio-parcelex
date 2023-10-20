@@ -60,7 +60,7 @@ function App() {
           !isSuccess ?
             <>
               <div className="card-wrapper">
-                <div className="card">
+                <div className="card mx-auto md:w-[30rem]">
 
                   <div className="columns-1">
                     <div className="field avatar">
